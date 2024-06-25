@@ -1,24 +1,24 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-const Display = ({ text }) => <h1>{text}</h1>;
-const Display2 = ({ text }) => <h2>{text}</h2>;
-const StatisticLine = ({ text, value }) => (<div> {text} {value} </div>);
-const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>;
+const Display = ({ text }) => <h1>{text}</h1>
+const Display2 = ({ text }) => <h2>{text}</h2>
+const StatisticLine = ({ text, value }) => (<div> {text} {value} </div>)
+const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
 
 const Statistics = ({ feedback }) => {
   const calculateAverage = () => {
     if (feedback.total > 0) {
-      return (feedback.good - feedback.bad) / feedback.total;
+      return (feedback.good - feedback.bad) / feedback.total
     }
-    return 0;
-  };
+    return 0
+  }
 
   const calculatePositivePercentage = () => {
     if (feedback.total > 0) {
-      return (feedback.good / feedback.total) * 100;
+      return (feedback.good / feedback.total) * 100
     }
-    return 0;
-  };
+    return 0
+  }
 
   return (
     <div>
@@ -29,8 +29,8 @@ const Statistics = ({ feedback }) => {
       <StatisticLine text="average" value={calculateAverage().toFixed(2)} />
       <StatisticLine text="positive" value={'%' + calculatePositivePercentage().toFixed(2)} />
     </div>
-  );
-};
+  )
+}
 
 const App = () => {
   const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0, total: 0 });
@@ -48,8 +48,8 @@ const App = () => {
   };
 
   const handleBadClick = () => {
-    setFeedback({ ...feedback, bad: feedback.bad + 1, total: feedback.total + 1 });
-  };
+    setFeedback({ ...feedback, bad: feedback.bad + 1, total: feedback.total + 1 })
+  }
 
   return (
     <div>
@@ -64,7 +64,7 @@ const App = () => {
         <div>No feedback given</div>
       )}
     </div>
-  );
-};
+  )
+}
 
 export default App;
